@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MSM Concussion App</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container">
+    <h1>MSM Concussion Assessment</h1>
+</div>
+<div class="container assessment" id="orientation">
+    <h2>Orientation <small>Maddock's</small></h2>
+    <ul>
+        <li>Where are we?</li>
+        <li>What quarter (half/period) is it right now?</li>
+        <li>Who scored last in practice/game?</li>
+        <li>Who did we play in the last game?</li>
+        <li>Did we win the last game?</li>
+    </ul>
+    <input type="text" placeholder="Total for orientation">
+</div>
+<div class="container assessment" id="word-recall">
+    <h2>Word Recall <small>SAC</small></h2>
+    <p>Read list of words one second at a time and ask to repeat list in any order. Repeat same list with same instructions for trial 2 and 3. Do not advise there will be a delayed recall.</p>
+    Word List:
+    <ul>
+        <li>Bacon</li>
+        <li>Hunter</li>
+        <li>Paper</li>
+        <li>Silver</li>
+        <li>Rabbit</li>
+    </ul>
+</div>
+<div class="container assessment" id="delayed-word-recall">
+    <h2>Delayed Work Recall</h2>
+    <p>Perform at end of all sideline testing, at least >5 minutes</p>
+</div>
+<div class="container assessment" id="concentration">
+    <h2>Concentration <small>SAC</small></h2>
+    <p>Read string of numbers, ask athlete to repeat backwards. If correct, go to next string length; if incorrect, go to next string, same length.</p>
+    Sequence
+    <ul>
+        <li>3-1-6</li>
+        <li>4-8-3-7</li>
+        <li>5-1-6-9-2</li>
+        <li>8-4-2-6-5-8</li>
+    </ul>
+</div>
+<div class="container assessment" id="twelve-months">
+    <h2>12 Months-in-reverse Order</h2>
+    <p>Recite the 12 months of the year backwards in <30 seconds</p>
+</div>
+<div class="container assessment" id="modified-bess">
+    <h2>Modified Bess</h2>
+    <p>Three 20-second tests, eyes closed, hands on waist</p>
+    Tests:
+    <ul>
+        <li>Double leg stance (even momentary)</li>
+        <li>Single leg stance (non-dominant foot)</li>
+        <li>Tandem stance (non-dominant foot at back)</li>
+    </ul>
+</div>
+<div class="container assessment" id="coordination">
+    <h2>Coordination</h2>
+    Tests:
+    <ul>
+        <li>Upper extremity (right or left)</li>
+        <li>Finger-to-nose, eyes open</li>
+        <li>Five repetitions in < 4 seconds = 1 point, failure = 0</li>
+    </ul>
+</div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
