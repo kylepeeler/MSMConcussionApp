@@ -101,112 +101,30 @@
 <div class="container assessment" id="word-recall">
     <h2>Word Recall <small>SAC</small></h2>
     <p class="lead">Read list of words one second at a time and ask to repeat list in any order. Repeat same list with same instructions for trial 2 and 3. Do not advise there will be a delayed recall. Check any words that have been recalled.</p>
-    <div class="word-list col-xs-4">
-        <p class="text-center">Trial 1</p>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" value="1">
-                Bacon
-            </label>
-        </div>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" value="1">
-                Hunter
-            </label>
-        </div>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" value="1">
-                Paper
-            </label>
-        </div>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" value="1">
-                Silver
-            </label>
-        </div>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" value="1">
-                Rabbit
-            </label>
-        </div>
+    <div class="col-xs-4">
+        <p class="text-center"><strong>Trial 1</strong></p>
+        <div class="word-list trial-1-list"></div>
     </div>
-    <div class="word-list col-xs-4">
-        <p class="text-center">Trial 2</p>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" value="1">
-                Coffee
-            </label>
-        </div>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" value="1">
-                Airplane
-            </label>
-        </div>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" value="1">
-                Water
-            </label>
-        </div>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" value="1">
-                Basket
-            </label>
-        </div>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" value="1">
-                Olive
-            </label>
-        </div>
+    <div class="col-xs-4">
+        <p class="text-center"><strong>Trial 2</strong></p>
+        <div class="word-list trial-2-list"></div>
     </div>
-    <div class="word-list col-xs-4">
-        <p class="text-center">Trial 3</p>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" value="1">
-                Mountain
-            </label>
-        </div>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" value="1">
-                Bamboo
-            </label>
-        </div>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" value="1">
-                Chimney
-            </label>
-        </div>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" value="1">
-                Acorn
-            </label>
-        </div>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" value="1">
-                Stomach
-            </label>
-        </div>
+    <div class="col-xs-4">
+        <p class="text-center"><strong>Trial 3</strong></p>
+        <div class="word-list trial-3-list"></div>
     </div>
     <div class="form-group">
         <label for="total-word-recall">Total sum of 3 Immediate Recall Trials</label>
         <input type="text" class="form-control" id="total-word-recall" placeholder="Score" disabled>
     </div>
+    <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="generateWordRecallLists()">Generate new word lists</button>
+    <br>
     <div class="btn-group btn-group-justified" role="group" aria-label="...">
         <div class="btn-group" role="group">
             <button type="button" class="btn btn-default" onclick="showOrientation()">Previous</button>
+        </div>
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default" onclick="resetWordRecall();">Reset Test</button>
         </div>
         <div class="btn-group" role="group">
             <button type="button" class="btn btn-default" onclick="showDelayedWordRecall()">Next</button>
@@ -218,39 +136,8 @@
 <div class="container assessment" id="delayed-word-recall">
     <h2>Delayed Work Recall</h2>
     <p class="lead">Read list of words one second at a time and ask to repeat list in any order. Perform at end of all sideline testing, at least >5 minutes. Check any words that have been recalled.</p>
-    <div class="word-list">
-        <p class="text-center">Word List</p>
-        <div class="checkbox col-xs-push-5">
-            <label>
-                <input type="checkbox" value="1">
-                Bacon
-            </label>
-        </div>
-        <div class="checkbox col-xs-push-5">
-            <label>
-                <input type="checkbox" value="1">
-                Hunter
-            </label>
-        </div>
-        <div class="checkbox col-xs-push-5">
-            <label>
-                <input type="checkbox" value="1">
-                Paper
-            </label>
-        </div>
-        <div class="checkbox col-xs-push-5">
-            <label>
-                <input type="checkbox" value="1">
-                Silver
-            </label>
-        </div>
-        <div class="checkbox col-xs-push-5">
-            <label>
-                <input type="checkbox" value="1">
-                Rabbit
-            </label>
-        </div>
-    </div>
+    <p class="text-center delayed-trial-list"><strong>Word List</strong></p>
+    <div class="word-list col-xs-push-5"></div>
     <div class="form-group">
         <label for="total-delayed-word-recall">Total of delayed recall trial</label>
         <input type="text" class="form-control" id="total-delayed-word-recall" placeholder="Score" disabled>

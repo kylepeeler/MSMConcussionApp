@@ -11,10 +11,38 @@ var orientationValues = {
     lastGameWin: false
 };
 
+var wordRecallLists = [
+    ["Bacon", "Hunter", "Paper", "Silver", "Rabbit"],
+    ["Coffee", "Airplane", "Water", "Basket", "Olive"],
+    ["Mountain", "Bamboo", "Chimney", "Acorn", "Stomach"]
+];
+
 $(document).ready(function(){
     showOrientation();
     initializeScores();
+    generateWordRecallLists();
 });
+
+function generateWordRecallLists(){
+    //get a random word list
+    var wordListIndex = Math.floor((Math.random() * wordRecallLists.length));
+    var wordList = wordRecallLists[wordListIndex];
+    var wordListOutput = "";
+    for (var i = 0; i < wordList.length; i++){
+        wordListOutput += "<div class='checkbox word-list-checkbox'><label><input type='checkbox' value='1'> " +  wordList[i] + "</label></div>"
+    }
+    //output the html
+    $(".word-list").each(function(){
+        $(this).html(wordListOutput);
+    });
+    //update the score (should set to 0 with new list)
+    $("#total-word-recall").val(calculateWordRecallScore());
+    //setup the event handler
+    $(".word-list-checkbox").click(function(){
+        //update the total score
+        $("#total-word-recall").val(calculateWordRecallScore());
+    });
+}
 
 function initializeScores(){
     $("#total-orientation").val(0);
@@ -40,6 +68,28 @@ function calculateOrientationScore(){
     return orientationTestScore;
 }
 
+function calculateWordRecallScore(){
+    var trial1Sum = 0;
+    var trial2Sum = 0;
+    var trial3Sum = 0;
+    $(".trial-1-list input").each(function(){
+        if ($(this).is(":checked")){
+            trial1Sum++;
+        }
+    });
+    $(".trial-2-list input").each(function(){
+        if ($(this).is(":checked")){
+            trial2Sum++;
+        }
+    });
+    $(".trial-3-list input").each(function(){
+        if ($(this).is(":checked")){
+            trial3Sum++;
+        }
+    });
+    return trial1Sum + trial2Sum + trial3Sum;
+}
+
 function resetOrientation(){
     var reallyReset = confirm("Are you sure you want to reset the orientation test?");
     if (reallyReset){
@@ -51,7 +101,7 @@ function resetOrientation(){
         //update the total score
         $("#total-orientation").val(calculateOrientationScore());
         //enable all orientation buttons
-        var $correctButtons = $(".orientation-correct")
+        var $correctButtons = $(".orientation-correct");
         var $incorrectButtons = $(".orientation-incorrect");
         $correctButtons.prop('disabled', false);
         $incorrectButtons.prop('disabled', false);
@@ -130,6 +180,15 @@ function showOrientation(){
     })
 }
 
+function resetWordRecall(){
+    //uncheck all the boxes
+    $(".word-list-checkbox input").each(function(){
+       $(this).prop('checked', false);
+    });
+    //recalculate the score
+    $("#total-word-recall").val(calculateWordRecallScore());
+}
+
 function showWordRecall(){
     $("#orientation").hide();
     $("#word-recall").show();
@@ -139,6 +198,8 @@ function showWordRecall(){
     $("#modified-bess").hide();
     $("#coordination").hide();
     $("#total-score").hide();
+
+
 }
 
 function showDelayedWordRecall(){
