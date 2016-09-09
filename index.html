@@ -8,6 +8,8 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!--Custom App CSS-->
+    <link rel="stylesheet" href="css/style.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -24,46 +26,71 @@
 
 <div class="container assessment" id="orientation">
     <h2>Orientation <small>Maddock's</small></h2>
-    <ul class="list-unstyled">
+    <ul class="orientation-questions list-unstyled">
         <li>Where are we?
-            <p>
-                <button type="button" class="btn btn-primary orientation-correct">Correct</button>
-                <button type="button" class="btn btn-default orientation-incorrect">Incorrect</button>
-            </p>
+            <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                <div class="btn-group" role="group">
+                    <button type="button" id="where-are-we-correct" class="btn btn-default orientation-correct">Correct</button>
+                </div>
+                <div class="btn-group" role="group">
+                    <button type="button" id="where-are-we-incorrect" class="btn btn-default orientation-incorrect">Incorrect</button>
+                </div>
+            </div>
         </li>
         <li>What quarter (half/period) is it right now?
-            <p>
-                <button type="button" class="btn btn-primary orientation-correct" >Correct</button>
-                <button type="button" class="btn btn-default orientation-incorrect">Incorrect</button>
-            </p>
+            <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                <div class="btn-group" role="group">
+                    <button type="button" id="period-correct" class="btn btn-default orientation-correct">Correct</button>
+                </div>
+                <div class="btn-group" role="group">
+                    <button type="button" id="period-incorrect" class="btn btn-default orientation-incorrect">Incorrect</button>
+                </div>
+            </div>
         </li>
         <li>Who scored last in practice/game?
-            <p>
-                <button type="button" class="btn btn-primary orientation-correct">Correct</button>
-                <button type="button" class="btn btn-default orientation-incorrect">Incorrect</button>
-            </p>
+            <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                <div class="btn-group" role="group">
+                    <button type="button" id="last-score-correct" class="btn btn-default orientation-correct">Correct</button>
+                </div>
+                <div class="btn-group" role="group">
+                    <button type="button" id="last-score-incorrect" class="btn btn-default orientation-incorrect">Incorrect</button>
+                </div>
+            </div>
         </li>
         <li>Who did we play in the last game?
-            <p>
-                <button type="button" class="btn btn-primary orientation-correct">Correct</button>
-                <button type="button" class="btn btn-default orientation-incorrect">Incorrect</button>
-            </p>
+            <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                <div class="btn-group" role="group">
+                    <button type="button" id="last-game-player-correct" class="btn btn-default orientation-correct">Correct</button>
+                </div>
+                <div class="btn-group" role="group">
+                    <button type="button" id="last-game-player-incorrect" class="btn btn-default orientation-incorrect">Incorrect</button>
+                </div>
+            </div>
         </li>
         <li>Did we win the last game?
-            <p>
-                <button type="button" class="btn btn-primary orientation-correct">Correct</button>
-                <button type="button" class="btn btn-default orientation-incorrect">Incorrect</button>
-            </p>
+            <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                <div class="btn-group" role="group">
+                    <button type="button" id="last-game-win-correct" class="btn btn-default orientation-correct">Correct</button>
+                </div>
+                <div class="btn-group" role="group">
+                    <button type="button" id="last-game-win-incorrect" class="btn btn-default orientation-incorrect">Incorrect</button>
+                </div>
+            </div>
         </li>
     </ul>
     <div class="form-group">
         <label for="total-orientation">Total for Orientation</label>
         <input type="text" class="form-control" id="total-orientation" placeholder="Score" disabled>
     </div>
+
+
     <div class="btn-group btn-group-justified" role="group" aria-label="...">
-        <!--<div class="btn-group" role="group">-->
-            <!--<button type="button" class="btn btn-default">Previous</button>-->
-        <!--</div>-->
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default">Previous</button>
+        </div>
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default" onclick="resetOrientation();">Reset Test</button>
+        </div>
         <div class="btn-group" role="group">
             <button type="button" class="btn btn-default" onclick="showWordRecall();">Next</button>
         </div>
