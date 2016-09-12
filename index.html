@@ -80,19 +80,19 @@
     </ul>
     <div class="form-group">
         <label for="total-orientation">Total for Orientation</label>
-        <input type="text" class="form-control" id="total-orientation" placeholder="Score" disabled>
+        <input type="text" class="form-control" id="total-orientation" placeholder="Score" value="0" disabled>
     </div>
 
 
     <div class="btn-group btn-group-justified" role="group" aria-label="...">
-        <div class="btn-group" role="group">
-            <button type="button" class="btn btn-default">Previous</button>
-        </div>
+        <!--<div class="btn-group" role="group">-->
+            <!--<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Previous</button>-->
+        <!--</div>-->
         <div class="btn-group" role="group">
             <button type="button" class="btn btn-default" onclick="resetOrientation();">Reset Test</button>
         </div>
         <div class="btn-group" role="group">
-            <button type="button" class="btn btn-default" onclick="showWordRecall();">Next</button>
+            <button type="button" class="btn btn-default" onclick="showWordRecall();">Next <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
         </div>
     </div>
 </div>
@@ -115,39 +115,42 @@
     </div>
     <div class="form-group">
         <label for="total-word-recall">Total sum of 3 Immediate Recall Trials</label>
-        <input type="text" class="form-control" id="total-word-recall" placeholder="Score" disabled>
+        <input type="text" class="form-control" id="total-word-recall" placeholder="Score" value="0" disabled>
     </div>
     <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="generateWordRecallLists()">Generate new word lists</button>
     <br>
     <div class="btn-group btn-group-justified" role="group" aria-label="...">
         <div class="btn-group" role="group">
-            <button type="button" class="btn btn-default" onclick="showOrientation()">Previous</button>
+            <button type="button" class="btn btn-default" onclick="showOrientation()"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Previous</button>
         </div>
         <div class="btn-group" role="group">
             <button type="button" class="btn btn-default" onclick="resetWordRecall();">Reset Test</button>
         </div>
         <div class="btn-group" role="group">
-            <button type="button" class="btn btn-default" onclick="showDelayedWordRecall()">Next</button>
+            <button type="button" class="btn btn-default" onclick="showDelayedWordRecall()">Next <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
         </div>
     </div>
 </div>
 
 
 <div class="container assessment" id="delayed-word-recall">
-    <h2>Delayed Work Recall</h2>
+    <h2>Delayed Word Recall</h2>
     <p class="lead">Read list of words one second at a time and ask to repeat list in any order. Perform at end of all sideline testing, at least >5 minutes. Check any words that have been recalled.</p>
-    <p class="text-center delayed-trial-list"><strong>Word List</strong></p>
-    <div class="word-list col-xs-push-5"></div>
+    <p class="text-center"><strong>Word List</strong></p>
+    <div class="delayed-trial-list word-list col-xs-push-5"></div>
     <div class="form-group">
         <label for="total-delayed-word-recall">Total of delayed recall trial</label>
-        <input type="text" class="form-control" id="total-delayed-word-recall" placeholder="Score" disabled>
+        <input type="text" class="form-control" id="total-delayed-word-recall" placeholder="Score" value="0" disabled>
     </div>
     <div class="btn-group btn-group-justified" role="group" aria-label="...">
         <div class="btn-group" role="group">
-            <button type="button" class="btn btn-default" onclick="showWordRecall()">Previous</button>
+            <button type="button" class="btn btn-default" onclick="showWordRecall()"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Previous</button>
         </div>
         <div class="btn-group" role="group">
-            <button type="button" class="btn btn-default" onclick="showConcentration()">Next</button>
+            <button type="button" class="btn btn-default" onclick="resetDelayedWordRecall();">Reset Test</button>
+        </div>
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default" onclick="showConcentration()">Next <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
         </div>
     </div>
 </div>
@@ -156,23 +159,29 @@
 <div class="container assessment" id="concentration">
     <h2>Concentration <small>SAC</small></h2>
     <p class="lead">Read string of numbers, ask athlete to repeat backwards. If correct, go to next string length; if incorrect, go to next string, same length.</p>
-    Sequence
-    <ul>
-        <li>3-1-6</li>
-        <li>4-8-3-7</li>
-        <li>5-1-6-9-2</li>
-        <li>8-4-2-6-5-8</li>
-    </ul>
+    Sequence<br>
+    <span style="font-size: 36px; font-weight: bold;" class="sequence"></span>
+    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+        <div class="btn-group" role="group">
+            <button type="button" id="sequence-correct" class="btn btn-default sequence-correct" onclick="generateConcentrationSequence(++concentrationSequenceLength, concentrationSequenceIndex); addToConcentrationScore();">Correct</button>
+        </div>
+        <div class="btn-group" role="group">
+            <button type="button" id="sequence-incorrect" class="btn btn-default sequence-incorrect" onclick="generateConcentrationSequence(concentrationSequenceLength, concentrationSequenceIndex)">Incorrect</button>
+        </div>
+    </div>
     <div class="form-group">
         <label for="total-word-recall">Total correct sequences backwards</label>
-        <input type="text" class="form-control" id="total-concentration" placeholder="Score" disabled>
+        <input type="text" class="form-control" id="total-concentration" value="0" placeholder="Score" disabled>
     </div>
     <div class="btn-group btn-group-justified" role="group" aria-label="...">
         <div class="btn-group" role="group">
-            <button type="button" class="btn btn-default" onclick="showDelayedWordRecall()">Previous</button>
+            <button type="button" class="btn btn-default" onclick="showDelayedWordRecall()"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Previous</button>
         </div>
         <div class="btn-group" role="group">
-            <button type="button" class="btn btn-default" onclick="showTwelveMonths()">Next</button>
+            <button type="button" class="btn btn-default" onclick="resetConcentrationSequence();">Reset Test</button>
+        </div>
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default" onclick="showTwelveMonths()">Next <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
         </div>
     </div>
 </div>
@@ -180,12 +189,25 @@
 
 <div class="container assessment" id="twelve-months">
     <h2>12 Months-in-Reverse Order</h2>
-    <p class="lead">Recite the 12 months of the year backwards in <30 seconds</p>
-    [TIMER START/STOP GOES HERE]
+    <p class="lead">Recite the 12 months of the year backwards in < 30 seconds</p>
+    <div>
+        <strong>Timer</strong>
+        <span id="cd_s">00</span>:
+        <span id="cd_ms">00</span>
+        <br/>
+        <input type="button" value="Start" id="cd_start" />
+        <input type="button" value="Pause" id="cd_pause" />
+        <input type="button" value="Stop"  id="cd_stop" />
+        <input type="button" value="Reset" id="cd_reset" />
+        <br/>
+        <br/>
+        <input type="text" value="30" id="cd_seconds" style="display:none;"/>
+        <span id="cd_status" style="display:none;">Idle</span>
+    </div>
 
     <div class="form-group">
-        <label for="total-twelve-months">Total correct sequence of months-in-reverse</label>
-        Correct Sequence:
+        <label>Total correct sequence of months-in-reverse</label>
+        <br>Correct Sequence:
         <ul>
             <li>December</li>
             <li>November</li>
@@ -200,14 +222,23 @@
             <li>February</li>
             <li>January</li>
         </ul>
-        <input type="text" class="form-control" id="total-twelve-months" placeholder="Score" disabled>
+        Did they recite correctly?
+            <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                <div class="btn-group" role="group">
+                    <button type="button" id="twelve-months-correct" class="btn btn-default twelve-months-correct">Yes</button>
+                </div>
+                <div class="btn-group" role="group">
+                    <button type="button" id="twelve-months-incorrect" class="btn btn-default twelve-months-incorrect">No</button>
+                </div>
+            </div>
+
     </div>
     <div class="btn-group btn-group-justified" role="group" aria-label="...">
         <div class="btn-group" role="group">
-            <button type="button" class="btn btn-default" onclick="showConcentration()">Previous</button>
+            <button type="button" class="btn btn-default" onclick="showConcentration()"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Previous</button>
         </div>
         <div class="btn-group" role="group">
-            <button type="button" class="btn btn-default" onclick="showModifiedBess()">Next</button>
+            <button type="button" class="btn btn-default" onclick="showModifiedBess()">Next <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
         </div>
     </div>
 </div>
@@ -216,22 +247,60 @@
 <div class="container assessment" id="modified-bess">
     <h2>Modified Bess</h2>
     <p class="lead">Three 20-second tests, eyes closed, hands on waist</p>
-    Tests:
+    <strong>Types of Errors:</strong>
     <ul>
-        <li>Double leg stance (even momentary)</li>
-        <li>Single leg stance (non-dominant foot)</li>
-        <li>Tandem stance (non-dominant foot at back)</li>
+        <li>Opening eyes</li>
+        <li>Step, stumble or fall</li>
+        <li>Hands lifted off waist</li>
+        <li>Lifting forefoot or heel</li>
+        <li>Remaining out of test position >5 secs</li>
+        <li>Moving hip into >30 degrees abduction</li>
+    </ul>
+    <strong>Tests:</strong>
+    <ul class="list-unstyled">
+        <li>Double leg stance (even momentary)
+        <br>
+            <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                <div class="btn-group" role="group">
+                    <button type="button" id="doubleLegAddError" class="btn btn-default add-bess-error" onclick="addBessError()">Add Error</button>
+                </div>
+                <div class="btn-group" role="group">
+                    <button type="button" id="doubleLegRemoveError" class="btn btn-default remove-bess-error" onclick="removeBessError()">Remove Error</button>
+                </div>
+            </div>
+        </li>
+        <li>Single leg stance (non-dominant foot)
+            <br>
+            <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                <div class="btn-group" role="group">
+                    <button type="button" id="singleLegAddError" class="btn btn-default add-bess-error" onclick="addBessError()">Add Error</button>
+                </div>
+                <div class="btn-group" role="group">
+                    <button type="button" id="singleLegRemoveError" class="btn btn-default remove-bess-error" onclick="removeBessError()">Remove Error</button>
+                </div>
+            </div>
+        </li>
+        <li>Tandem stance (non-dominant foot at back)
+            <br>
+            <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                <div class="btn-group" role="group">
+                    <button type="button" id="tandemStanceAddError" class="btn btn-default add-bess-error" onclick="addBessError()">Add Error</button>
+                </div>
+                <div class="btn-group" role="group">
+                    <button type="button" id="tandemStanceRemoveError" class="btn btn-default remove-bess-error" onclick="removeBessError()">Remove Error</button>
+                </div>
+            </div></li>
     </ul>
     <div class="form-group">
         <label for="total-modified-bess">Balance Score (Sum of Errors)</label>
-        <input type="text" class="form-control" id="total-modified-bess" placeholder="Score" disabled>
+        <input type="text" class="form-control" id="total-modified-bess" placeholder="Score" value="0" disabled>
     </div>
     <div class="btn-group btn-group-justified" role="group" aria-label="...">
         <div class="btn-group" role="group">
-            <button type="button" class="btn btn-default" onclick="showTwelveMonths()">Previous</button>
+            <button type="button" class="btn btn-default" onclick="showTwelveMonths()"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Previous</button>
         </div>
         <div class="btn-group" role="group">
-            <button type="button" class="btn btn-default" onclick="showCoordination()">Next</button>
+            <button type="button" class="btn btn-default" onclick="showCoordination()">Next <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
         </div>
     </div>
 </div>
@@ -239,12 +308,31 @@
 
 <div class="container assessment" id="coordination">
     <h2>Coordination</h2>
+    <p class="lead">Five repetitions in <4 seconds = 1 point, failure - 0. Must touch nose, arm must exten each time.</p>
     Tests:
-    <ul>
-        <li>Upper extremity (right or left)</li>
-        <li>Finger-to-nose, eyes open</li>
-        <li>Five repetitions in < 4 seconds = 1 point, failure = 0</li>
-        <li>(Must touch nose, arm must fully extend each time)</li>
+    <ul class="list-unstyled">
+        <li>Upper extremity (right or left)
+            <br>
+            <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                <div class="btn-group" role="group">
+                    <button type="button" id="upperExtremitySuccess" class="btn btn-default coordination-success">Success</button>
+                </div>
+                <div class="btn-group" role="group">
+                    <button type="button" id="upperExtremityFailure" class="btn btn-default coordination-failure">Failure</button>
+                </div>
+            </div>
+        </li>
+        <li>Finger-to-nose, eyes open
+            <br>
+            <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                <div class="btn-group" role="group">
+                    <button type="button" id="fingerToNoseSuccess" class="btn btn-default coordination-success">Success</button>
+                </div>
+                <div class="btn-group" role="group">
+                    <button type="button" id="fingerToNoseFailure" class="btn btn-default coordination-failure">Failure</button>
+                </div>
+            </div>
+        </li>
     </ul>
     <div class="form-group">
         <label for="total-coordination">Coordination Score</label>
@@ -252,10 +340,10 @@
     </div>
     <div class="btn-group btn-group-justified" role="group" aria-label="...">
         <div class="btn-group" role="group">
-            <button type="button" class="btn btn-default" onclick="showModifiedBess()">Previous</button>
+            <button type="button" class="btn btn-default" onclick="showModifiedBess()"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Previous</button>
         </div>
         <div class="btn-group" role="group">
-            <button type="button" class="btn btn-default" onclick="showTotalScore()">Next</button>
+            <button type="button" class="btn btn-default" onclick="showTotalScore()">Next <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
         </div>
     </div>
 </div>
@@ -263,15 +351,15 @@
 <div class="container" id="total-score">
     <h2>Total Scores:</h2>
     <p class="lead">All scores should be compared with baseline for the individual athlete.</p>
-    <h3>Total Maddock's/SAC Score:</h3> <h1 class="text-center">0</h1><br>
-    <h3>Total Balance Score:</h3> <h1 class="text-center">0</h1><br>
-    <h3>Total Coordination Score:</h3> <h1 class="text-center">0</h1><br>
+    <h3>Total Maddock's/SAC Score:</h3> <h1 class="text-center" id="final-maddocks-score">0</h1><br>
+    <h3>Total Balance Score:</h3> <h1 class="text-center" id="final-balance-score">0</h1><br>
+    <h3>Total Coordination Score:</h3> <h1 class="text-center" id="final-coordination-score">0</h1><br>
     <div class="btn-group btn-group-justified" role="group" aria-label="...">
         <div class="btn-group" role="group">
-            <button type="button" class="btn btn-default" onclick="showModifiedBess()">Previous</button>
+            <button type="button" class="btn btn-default" onclick="showModifiedBess()"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Previous</button>
         </div>
         <div class="btn-group" role="group">
-            <button type="button" class="btn btn-default" onclick="showOrientation()">Restart</button>
+            <button type="button" class="btn btn-default" onclick="location.reload()">Restart <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></button>
         </div>
     </div>
 </div>
@@ -279,6 +367,8 @@
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!--Timer-->
+<script src="js/timer.js"></script>
 <!-- Prototype App Script-->
 <script src="js/main.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
